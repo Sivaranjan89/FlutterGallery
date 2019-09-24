@@ -9,6 +9,7 @@ import 'package:flutter_gallery/button/raised_button.dart';
 import 'package:flutter_gallery/button/toggle_button.dart';
 import 'package:flutter_gallery/checkbox/checkbox.dart';
 import 'package:flutter_gallery/dialog/alert_dialog.dart';
+import 'package:flutter_gallery/dialog/custom_dialog.dart';
 import 'package:flutter_gallery/image/image_asset.dart';
 import 'package:flutter_gallery/image/image_url.dart';
 import 'package:flutter_gallery/radiobutton/radiobutton.dart';
@@ -158,7 +159,7 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewAlertDialog()));
     }
     else if(titles.elementAt(pos) == 'Dialog') {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewAlertDialog()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
     }
   }
 }
