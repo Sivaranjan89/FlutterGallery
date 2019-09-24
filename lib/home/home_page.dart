@@ -8,6 +8,7 @@ import 'package:flutter_gallery/button/icon_button.dart';
 import 'package:flutter_gallery/button/raised_button.dart';
 import 'package:flutter_gallery/button/toggle_button.dart';
 import 'package:flutter_gallery/checkbox/checkbox.dart';
+import 'package:flutter_gallery/chips/chips.dart';
 import 'package:flutter_gallery/dialog/alert_dialog.dart';
 import 'package:flutter_gallery/dialog/custom_dialog.dart';
 import 'package:flutter_gallery/image/image_asset.dart';
@@ -174,7 +175,7 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
     }
     else if(titles.elementAt(pos) == 'Chips') {
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewChips()));
     }
     else if(titles.elementAt(pos) == 'Date / Time Picker') {
       //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
