@@ -67,18 +67,8 @@ class _State extends State<PreviewDialog> {
     );
   }
 
-  WebViewController _myController;
   void showCode() {
-    WebView webView = WebView(
-      initialUrl: 'https://docs.google.com/document/d/e/2PACX-1vR4xAfrpppTa7KJqw781RFhG9g27EHDVRNwiMwWBZ-qYUSyGoiuel3NUrd9n1AQ3_PwFkzxZDlU_0DG/pub',
-      javascriptMode: JavascriptMode.unrestricted,
-      onWebViewCreated: (controller){ _myController = controller; },
-      onPageFinished: (url) {
-        _myController.evaluateJavascript("javascript:(function() { " +
-            "document.getElementById('footer').style.display='none';})()");
-      },
-    );
-    Dialog dialog = ApplicationConstants.getCodeDialog(webView);
+    Dialog dialog = ApplicationConstants.getCodeDialog('https://docs.google.com/document/d/e/2PACX-1vR4xAfrpppTa7KJqw781RFhG9g27EHDVRNwiMwWBZ-qYUSyGoiuel3NUrd9n1AQ3_PwFkzxZDlU_0DG/pub');
     showDialog(context: context, builder: (context) => dialog);
   }
 }

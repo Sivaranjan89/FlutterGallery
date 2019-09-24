@@ -37,18 +37,8 @@ class _State extends State<PreviewImageAsset> {
     );
   }
 
-  WebViewController _myController;
   void showCode() {
-    WebView webView = WebView(
-      initialUrl: 'https://docs.google.com/document/d/e/2PACX-1vT5v_GBwWKG69D6VmAeKh9KM7XvpagKdVe0XFsZzcmQZSl-t83206Jsn-r07NZ8oC0HqNzueDmIi6vv/pub',
-      javascriptMode: JavascriptMode.unrestricted,
-      onWebViewCreated: (controller){ _myController = controller; },
-      onPageFinished: (url) {
-        _myController.evaluateJavascript("javascript:(function() { " +
-            "document.getElementById('footer').style.display='none';})()");
-      },
-    );
-    Dialog dialog = ApplicationConstants.getCodeDialog(webView);
+    Dialog dialog = ApplicationConstants.getCodeDialog('https://docs.google.com/document/d/e/2PACX-1vT5v_GBwWKG69D6VmAeKh9KM7XvpagKdVe0XFsZzcmQZSl-t83206Jsn-r07NZ8oC0HqNzueDmIi6vv/pub');
     showDialog(context: context, builder: (context) => dialog);
   }
 }

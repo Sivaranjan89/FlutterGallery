@@ -79,18 +79,8 @@ class _State extends State<PreviewFlatButton> {
     );
   }
 
-  WebViewController _myController;
   void showCode() {
-    WebView webView = WebView(
-      initialUrl: 'https://docs.google.com/document/d/e/2PACX-1vQSRS5o85zCWFvN9GIa-hkDo-a15UxfOQixZHg6ZFW2OONhwpj_fDQIk8sL8Ehzh07xkZ1oOk79y2kM/pub',
-      javascriptMode: JavascriptMode.unrestricted,
-      onWebViewCreated: (controller){ _myController = controller; },
-      onPageFinished: (url) {
-        _myController.evaluateJavascript("javascript:(function() { " +
-            "document.getElementById('footer').style.display='none';})()");
-      },
-    );
-    Dialog dialog = ApplicationConstants.getCodeDialog(webView);
+    Dialog dialog = ApplicationConstants.getCodeDialog('https://docs.google.com/document/d/e/2PACX-1vQSRS5o85zCWFvN9GIa-hkDo-a15UxfOQixZHg6ZFW2OONhwpj_fDQIk8sL8Ehzh07xkZ1oOk79y2kM/pub');
     showDialog(context: context, builder: (context) => dialog);
   }
 }

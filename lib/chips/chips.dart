@@ -73,18 +73,8 @@ class _State extends State<PreviewChips> {
     );
   }
 
-  WebViewController _myController;
   void showCode() {
-    WebView webView = WebView(
-      initialUrl: 'https://docs.google.com/document/d/e/2PACX-1vRBYq1FsqSO41xQgPlwAQTpogLuyE4YY1re_tYPK5NImA2eYifWSBvc3ZiIxTShbnCqoHKeJYkEkJ9J/pub',
-      javascriptMode: JavascriptMode.unrestricted,
-      onWebViewCreated: (controller){ _myController = controller; },
-      onPageFinished: (url) {
-        _myController.evaluateJavascript("javascript:(function() { " +
-            "document.getElementById('footer').style.display='none';})()");
-      },
-    );
-    Dialog dialog = ApplicationConstants.getCodeDialog(webView);
+    Dialog dialog = ApplicationConstants.getCodeDialog('https://docs.google.com/document/d/e/2PACX-1vRBYq1FsqSO41xQgPlwAQTpogLuyE4YY1re_tYPK5NImA2eYifWSBvc3ZiIxTShbnCqoHKeJYkEkJ9J/pub');
     showDialog(context: context, builder: (context) => dialog);
   }
 

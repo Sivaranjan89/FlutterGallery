@@ -41,21 +41,8 @@ class _State extends State<PreviewCheckbox> {
     );
   }
 
-  WebViewController _myController;
   void showCode() {
-    WebView webView = WebView(
-      initialUrl:
-          'https://docs.google.com/document/d/e/2PACX-1vSQ84zAlCl-UVGdIoDXjpV7VE9n8Nk6Jn_70myjbn_ebax-O5gO8j96otZLVHLJa8foRNkyiTLFBcqu/pub',
-      javascriptMode: JavascriptMode.unrestricted,
-      onWebViewCreated: (controller) {
-        _myController = controller;
-      },
-      onPageFinished: (url) {
-        _myController.evaluateJavascript("javascript:(function() { " +
-            "document.getElementById('footer').style.display='none';})()");
-      },
-    );
-    Dialog dialog = ApplicationConstants.getCodeDialog(webView);
+    Dialog dialog = ApplicationConstants.getCodeDialog('https://docs.google.com/document/d/e/2PACX-1vSQ84zAlCl-UVGdIoDXjpV7VE9n8Nk6Jn_70myjbn_ebax-O5gO8j96otZLVHLJa8foRNkyiTLFBcqu/pub');
     showDialog(context: context, builder: (context) => dialog);
   }
 

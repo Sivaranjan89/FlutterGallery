@@ -63,18 +63,8 @@ class _State extends State<PreviewAnimatedSwitcher> {
     );
   }
 
-  WebViewController _myController;
   void showCode() {
-    WebView webView = WebView(
-      initialUrl: 'https://docs.google.com/document/d/e/2PACX-1vTIUQx3-p3UnlhTkiSFqlBsHkWBvqqzJhSrHqgektL69ETF2aaahnVvm9L0W38opLHJc2HQSSwhx-h7/pub',
-      javascriptMode: JavascriptMode.unrestricted,
-      onWebViewCreated: (controller){ _myController = controller; },
-      onPageFinished: (url) {
-        _myController.evaluateJavascript("javascript:(function() { " +
-            "document.getElementById('footer').style.display='none';})()");
-      },
-    );
-    Dialog dialog = ApplicationConstants.getCodeDialog(webView);
+    Dialog dialog = ApplicationConstants.getCodeDialog('https://docs.google.com/document/d/e/2PACX-1vTIUQx3-p3UnlhTkiSFqlBsHkWBvqqzJhSrHqgektL69ETF2aaahnVvm9L0W38opLHJc2HQSSwhx-h7/pub');
     showDialog(context: context, builder: (context) => dialog);
   }
 

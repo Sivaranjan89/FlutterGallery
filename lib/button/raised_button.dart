@@ -79,18 +79,8 @@ class _State extends State<PreviewRaisedButton> {
     );
   }
 
-  WebViewController _myController;
   void showCode() {
-    WebView webView = WebView(
-      initialUrl: 'https://docs.google.com/document/d/e/2PACX-1vRo_ewJekF4MEcd79hD3ah9TXM8OtQJcd3n4GFjxnX0iWMAe6MjUQZ4WuA-Gk_d0qBlWW4yFeP5fmoh/pub',
-      javascriptMode: JavascriptMode.unrestricted,
-      onWebViewCreated: (controller){ _myController = controller; },
-      onPageFinished: (url) {
-        _myController.evaluateJavascript("javascript:(function() { " +
-            "document.getElementById('footer').style.display='none';})()");
-      },
-    );
-    Dialog dialog = ApplicationConstants.getCodeDialog(webView);
+    Dialog dialog = ApplicationConstants.getCodeDialog('https://docs.google.com/document/d/e/2PACX-1vRo_ewJekF4MEcd79hD3ah9TXM8OtQJcd3n4GFjxnX0iWMAe6MjUQZ4WuA-Gk_d0qBlWW4yFeP5fmoh/pub');
     showDialog(context: context, builder: (context) => dialog);
   }
 }

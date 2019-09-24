@@ -49,21 +49,8 @@ class _State extends State<PreviewRadioButton> {
     );
   }
 
-  WebViewController _myController;
   void showCode() {
-    WebView webView = WebView(
-      initialUrl:
-          'https://docs.google.com/document/d/e/2PACX-1vRTAke-pU1WbPcZJDrVsO55XlQCkO5DvLniV2keWbOFkqRu87Try5ZCqknYFDIK8YxbEbyvQ5U7Bk2B/pub',
-      javascriptMode: JavascriptMode.unrestricted,
-      onWebViewCreated: (controller) {
-        _myController = controller;
-      },
-      onPageFinished: (url) {
-        _myController.evaluateJavascript("javascript:(function() { " +
-            "document.getElementById('footer').style.display='none';})()");
-      },
-    );
-    Dialog dialog = ApplicationConstants.getCodeDialog(webView);
+    Dialog dialog = ApplicationConstants.getCodeDialog('https://docs.google.com/document/d/e/2PACX-1vRTAke-pU1WbPcZJDrVsO55XlQCkO5DvLniV2keWbOFkqRu87Try5ZCqknYFDIK8YxbEbyvQ5U7Bk2B/pub');
     showDialog(context: context, builder: (context) => dialog);
   }
 
