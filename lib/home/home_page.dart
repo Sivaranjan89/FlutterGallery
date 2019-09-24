@@ -11,6 +11,9 @@ import 'package:flutter_gallery/checkbox/checkbox.dart';
 import 'package:flutter_gallery/chips/chips.dart';
 import 'package:flutter_gallery/dialog/alert_dialog.dart';
 import 'package:flutter_gallery/dialog/custom_dialog.dart';
+import 'package:flutter_gallery/dialog/time_date_dialog.dart';
+import 'package:flutter_gallery/drawer/drawer.dart';
+import 'package:flutter_gallery/home/home_screen.dart';
 import 'package:flutter_gallery/image/image_asset.dart';
 import 'package:flutter_gallery/image/image_url.dart';
 import 'package:flutter_gallery/radiobutton/radiobutton.dart';
@@ -33,6 +36,8 @@ class _HomePageState extends State<HomePage> {
 
   List<String> titles = List();
   List<String> sub_titles = List();
+  List<String> sorted_titles = List();
+  List<String> sorted_subtitles = List();
 
   @override
   void initState() {
@@ -42,20 +47,49 @@ class _HomePageState extends State<HomePage> {
     Future.delayed(const Duration(milliseconds: 1500), () {
       setState(() {
         addTitles();
+        for(int i=0; i<titles.length; i++) {
+          sorted_titles.add(titles[i]);
+          sorted_subtitles.add(sub_titles[i]);
+        }
       });
     });
   }
 
   @override
+  void didUpdateWidget(HomePage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    titles.clear();
+    sub_titles.clear();
+    sorted_titles.clear();
+    sorted_subtitles.clear();
+    addTitles();
+    if(!HomeScreen.searchedKeyword.isEmpty) {
+      for(int i=0; i<titles.length; i++) {
+        if(titles.elementAt(i).toLowerCase().contains(HomeScreen.searchedKeyword.toLowerCase())) {
+          sorted_titles.add(titles.elementAt(i));
+          sorted_subtitles.add(sub_titles.elementAt(i));
+        }
+      }
+    } else {
+      for(int i=0; i<titles.length; i++) {
+        sorted_titles.add(titles[i]);
+        sorted_subtitles.add(sub_titles[i]);
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ListView.builder(itemCount: titles.length, itemBuilder: (context, pos) {
+
+    return ListView.builder(itemCount: sorted_titles.length, itemBuilder: (context, pos) {
       return Center(
         child: Card(
           child: Container(
             padding: EdgeInsets.all(5),
             child: ListTile(
-              title: Text(titles.elementAt(pos)),
-              subtitle: Text(sub_titles.elementAt(pos)),
+              title: Text(sorted_titles.elementAt(pos)),
+              subtitle: Text(sorted_subtitles.elementAt(pos)),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black, size: 30),
               onTap: () {
                 renderPreview(pos);
@@ -120,76 +154,76 @@ class _HomePageState extends State<HomePage> {
   }
 
   void renderPreview(int pos) {
-    if(titles.elementAt(pos) == 'Raised Button') {
+    if(sorted_titles.elementAt(pos) == 'Raised Button') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewRaisedButton()));
     }
-    else if(titles.elementAt(pos) == 'Flat Button') {
+    else if(sorted_titles.elementAt(pos) == 'Flat Button') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewFlatButton()));
     }
-    else if(titles.elementAt(pos) == 'Icon Button') {
+    else if(sorted_titles.elementAt(pos) == 'Icon Button') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewIconButton()));
     }
-    else if(titles.elementAt(pos) == 'Drop Down Button') {
+    else if(sorted_titles.elementAt(pos) == 'Drop Down Button') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDropDownButton()));
     }
-    else if(titles.elementAt(pos) == 'Toggle Button') {
+    else if(sorted_titles.elementAt(pos) == 'Toggle Button') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewToggleButton()));
     }
-    else if(titles.elementAt(pos) == 'Text') {
+    else if(sorted_titles.elementAt(pos) == 'Text') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewText()));
     }
-    else if(titles.elementAt(pos) == 'Rich Text') {
+    else if(sorted_titles.elementAt(pos) == 'Rich Text') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewRichText()));
     }
-    else if(titles.elementAt(pos) == 'TextField') {
+    else if(sorted_titles.elementAt(pos) == 'TextField') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewTextField()));
     }
-    else if(titles.elementAt(pos) == 'TextFormField') {
+    else if(sorted_titles.elementAt(pos) == 'TextFormField') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewTextForm()));
     }
-    else if(titles.elementAt(pos) == 'Image (Assets)') {
+    else if(sorted_titles.elementAt(pos) == 'Image (Assets)') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewImageAsset()));
     }
-    else if(titles.elementAt(pos) == 'Image (URL)') {
+    else if(sorted_titles.elementAt(pos) == 'Image (URL)') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewImageURL()));
     }
-    else if(titles.elementAt(pos) == 'Switch') {
+    else if(sorted_titles.elementAt(pos) == 'Switch') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSwitch()));
     }
-    else if(titles.elementAt(pos) == 'SwitchListTile') {
+    else if(sorted_titles.elementAt(pos) == 'SwitchListTile') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSwitchListTile()));
     }
-    else if(titles.elementAt(pos) == 'AnimatedSwitcher') {
+    else if(sorted_titles.elementAt(pos) == 'AnimatedSwitcher') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewAnimatedSwitcher()));
     }
-    else if(titles.elementAt(pos) == 'Checkbox') {
+    else if(sorted_titles.elementAt(pos) == 'Checkbox') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewCheckbox()));
     }
-    else if(titles.elementAt(pos) == 'RadioButton') {
+    else if(sorted_titles.elementAt(pos) == 'RadioButton') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewRadioButton()));
     }
-    else if(titles.elementAt(pos) == 'AlertDialog') {
+    else if(sorted_titles.elementAt(pos) == 'AlertDialog') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewAlertDialog()));
     }
-    else if(titles.elementAt(pos) == 'Dialog') {
+    else if(sorted_titles.elementAt(pos) == 'Dialog') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
     }
-    else if(titles.elementAt(pos) == 'Chips') {
+    else if(sorted_titles.elementAt(pos) == 'Chips') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewChips()));
     }
-    else if(titles.elementAt(pos) == 'Date / Time Picker') {
+    else if(sorted_titles.elementAt(pos) == 'Date / Time Picker') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewTimeDateDialog()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Drawer') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDrawer()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Tab Bar') {
       //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
     }
-    else if(titles.elementAt(pos) == 'Drawer') {
+    else if(sorted_titles.elementAt(pos) == 'Bottom Bar') {
       //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
     }
-    else if(titles.elementAt(pos) == 'Tab Bar') {
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
-    }
-    else if(titles.elementAt(pos) == 'Bottom Bar') {
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
-    }
-    else if(titles.elementAt(pos) == 'Bottom Bar (FAB)') {
+    else if(sorted_titles.elementAt(pos) == 'Bottom Bar (FAB)') {
       //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
     }
   }
