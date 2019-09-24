@@ -14,9 +14,13 @@ class PreviewRadioButton extends StatefulWidget {
 }
 
 class _State extends State<PreviewRadioButton> {
+
+  var _selectedValue = 0;
+
   @override
   void initState() {
     super.initState();
+    _selectedValue = 1;
   }
 
   @override
@@ -33,9 +37,13 @@ class _State extends State<PreviewRadioButton> {
       ),
       body: Center(
         child: Wrap(
-          direction: Axis.vertical,
-          spacing: 10,
-          children: createWidgets(), //Lets create 8 checkboxes
+          direction: Axis.horizontal,
+          spacing: 1,
+          children: <Widget>[
+            RadioListTile(value: 0, groupValue: _selectedValue, onChanged: (int value) {handleRadioValue(value);}, activeColor: Colors.black, title: Text('Android')),
+            RadioListTile(value: 1, groupValue: _selectedValue, onChanged: (int value) {handleRadioValue(value);}, activeColor: Colors.black, title: Text('iOS')),
+            RadioListTile(value: 2, groupValue: _selectedValue, onChanged: (int value) {handleRadioValue(value);}, activeColor: Colors.black, title: Text('Flutter')),
+          ],
         ),
       ),
     );
@@ -59,7 +67,13 @@ class _State extends State<PreviewRadioButton> {
     showDialog(context: context, builder: (context) => dialog);
   }
 
-  //To hold the checkbox values
+  handleRadioValue(int value) {
+    setState(() {
+      _selectedValue = value;
+    });
+  }
+
+  /*//To hold the checkbox values
   var checkValues = [false, false, false, false, false, false, false, false];
 
   List<Widget> createWidgets() {
@@ -90,5 +104,5 @@ class _State extends State<PreviewRadioButton> {
       ));
     }
     return widgets;
-  }
+  }*/
 }
