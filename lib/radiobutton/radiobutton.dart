@@ -53,7 +53,7 @@ class _State extends State<PreviewRadioButton> {
   void showCode() {
     WebView webView = WebView(
       initialUrl:
-          'https://docs.google.com/document/d/e/2PACX-1vSQ84zAlCl-UVGdIoDXjpV7VE9n8Nk6Jn_70myjbn_ebax-O5gO8j96otZLVHLJa8foRNkyiTLFBcqu/pub',
+          'https://docs.google.com/document/d/e/2PACX-1vRTAke-pU1WbPcZJDrVsO55XlQCkO5DvLniV2keWbOFkqRu87Try5ZCqknYFDIK8YxbEbyvQ5U7Bk2B/pub',
       javascriptMode: JavascriptMode.unrestricted,
       onWebViewCreated: (controller) {
         _myController = controller;
@@ -72,37 +72,4 @@ class _State extends State<PreviewRadioButton> {
       _selectedValue = value;
     });
   }
-
-  /*//To hold the checkbox values
-  var checkValues = [false, false, false, false, false, false, false, false];
-
-  List<Widget> createWidgets() {
-    List<Widget> widgets = new List();
-
-    for (int i = 0; i < 8; i++) {
-      widgets.add(Container(
-        width: 220,
-        child: CheckboxListTile(
-          title: Text('Title ' + i.toString()), //Checkbox Main Text
-          subtitle: Text('Subtitle ' + i.toString()), //Checkbox Text below the title
-          activeColor: Colors.black, //The color of the checkbox when checked
-          checkColor: Colors.white, //The color of the checkbox when checked
-          value: checkValues[i], //The state of the checkbox
-          secondary: Column( //Lets create an icon / image as the secondary widget
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset('assets/images/logo.png',
-                  width: 30, color: Colors.black)
-            ],
-          ),
-          onChanged: (bool value) {
-            setState(() { //State for the touched checkbox changes with the updated value
-              checkValues[i] = !checkValues[i];
-            });
-          },
-        ),
-      ));
-    }
-    return widgets;
-  }*/
 }

@@ -8,6 +8,7 @@ import 'package:flutter_gallery/button/icon_button.dart';
 import 'package:flutter_gallery/button/raised_button.dart';
 import 'package:flutter_gallery/button/toggle_button.dart';
 import 'package:flutter_gallery/checkbox/checkbox.dart';
+import 'package:flutter_gallery/dialog/alert_dialog.dart';
 import 'package:flutter_gallery/image/image_asset.dart';
 import 'package:flutter_gallery/image/image_url.dart';
 import 'package:flutter_gallery/radiobutton/radiobutton.dart';
@@ -81,6 +82,8 @@ class _HomePageState extends State<HomePage> {
     titles.add("AnimatedSwitcher");
     titles.add("Checkbox");
     titles.add("RadioButton");
+    titles.add("AlertDialog");
+    titles.add("Dialog");
 
     sub_titles.add("Lets you display text to the user");
     sub_titles.add("Lets you span the text in different ways");
@@ -98,6 +101,8 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Switch between widgets with a nice animation");
     sub_titles.add("Give multiple choices for user to choose from");
     sub_titles.add("Give multiple choices for user to choose just one unlike checkbox");
+    sub_titles.add("Shows a dialog that requires immediate attention to the user");
+    sub_titles.add("Shows a customized dialog to the user");
   }
 
   void renderPreview(int pos) {
@@ -148,6 +153,12 @@ class _HomePageState extends State<HomePage> {
     }
     else if(titles.elementAt(pos) == 'RadioButton') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewRadioButton()));
+    }
+    else if(titles.elementAt(pos) == 'AlertDialog') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewAlertDialog()));
+    }
+    else if(titles.elementAt(pos) == 'Dialog') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewAlertDialog()));
     }
   }
 }
