@@ -85,6 +85,12 @@ class _HomePageState extends State<HomePage> {
     titles.add("RadioButton");
     titles.add("AlertDialog");
     titles.add("Dialog");
+    titles.add("Chips");
+    titles.add("Date / Time Picker");
+    titles.add("Drawer");
+    titles.add("Tab Bar");
+    titles.add("Bottom Bar");
+    titles.add("Bottom Bar (FAB)");
 
     sub_titles.add("Lets you display text to the user");
     sub_titles.add("Lets you span the text in different ways");
@@ -104,6 +110,12 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Give multiple choices for user to choose just one unlike checkbox");
     sub_titles.add("Shows a dialog that requires immediate attention to the user");
     sub_titles.add("Shows a customized dialog to the user");
+    sub_titles.add("Shows a chip view to the user");
+    sub_titles.add("Shows a date / time picker dialog for user to graphically choose");
+    sub_titles.add("Renders a navigation drawer on the left / right which can slided inside the screen");
+    sub_titles.add("Renders tabs where each tab will display its allocated child view. Much like viewing multiple screens in one screen");
+    sub_titles.add("Similar to the Tab bar but placed in the bottom");
+    sub_titles.add("Bottom Bar with Floating Action Button notched to it");
   }
 
   void renderPreview(int pos) {
@@ -160,6 +172,24 @@ class _HomePageState extends State<HomePage> {
     }
     else if(titles.elementAt(pos) == 'Dialog') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+    }
+    else if(titles.elementAt(pos) == 'Chips') {
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+    }
+    else if(titles.elementAt(pos) == 'Date / Time Picker') {
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+    }
+    else if(titles.elementAt(pos) == 'Drawer') {
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+    }
+    else if(titles.elementAt(pos) == 'Tab Bar') {
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+    }
+    else if(titles.elementAt(pos) == 'Bottom Bar') {
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+    }
+    else if(titles.elementAt(pos) == 'Bottom Bar (FAB)') {
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
     }
   }
 }
