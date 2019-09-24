@@ -7,8 +7,10 @@ import 'package:flutter_gallery/button/flat_button.dart';
 import 'package:flutter_gallery/button/icon_button.dart';
 import 'package:flutter_gallery/button/raised_button.dart';
 import 'package:flutter_gallery/button/toggle_button.dart';
+import 'package:flutter_gallery/checkbox/checkbox.dart';
 import 'package:flutter_gallery/image/image_asset.dart';
 import 'package:flutter_gallery/image/image_url.dart';
+import 'package:flutter_gallery/radiobutton/radiobutton.dart';
 import 'package:flutter_gallery/switch/switch.dart';
 import 'package:flutter_gallery/switch/switch_list_tile.dart';
 import 'package:flutter_gallery/text/rich_text.dart';
@@ -77,6 +79,8 @@ class _HomePageState extends State<HomePage> {
     titles.add("Switch");
     titles.add("SwitchListTile");
     titles.add("AnimatedSwitcher");
+    titles.add("Checkbox");
+    titles.add("RadioButton");
 
     sub_titles.add("Lets you display text to the user");
     sub_titles.add("Lets you span the text in different ways");
@@ -92,6 +96,8 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Allows user to choose between two states");
     sub_titles.add("Allows user to choose between two states along with an image and text");
     sub_titles.add("Switch between widgets with a nice animation");
+    sub_titles.add("Give multiple choices for user to choose from");
+    sub_titles.add("Give multiple choices for user to choose just one unlike checkbox");
   }
 
   void renderPreview(int pos) {
@@ -136,6 +142,12 @@ class _HomePageState extends State<HomePage> {
     }
     else if(titles.elementAt(pos) == 'AnimatedSwitcher') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewAnimatedSwitcher()));
+    }
+    else if(titles.elementAt(pos) == 'Checkbox') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewCheckbox()));
+    }
+    else if(titles.elementAt(pos) == 'RadioButton') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewRadioButton()));
     }
   }
 }
