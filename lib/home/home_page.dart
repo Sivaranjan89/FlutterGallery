@@ -188,16 +188,16 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Create a Fixed Appbar to display a group of widgets with actions");
     sub_titles.add("Display a Collapsing AppBar");
     sub_titles.add("Display a Collapsing AppBar with a Floating Action button attached");
-    titles.add("Data Table");
-    titles.add('ExpansionTile');
-    titles.add('ExpansionPanel');
-    titles.add('PopMenuButton');
-    titles.add('BottomSheet');
-    titles.add('Progress Bar');
-    titles.add('Slider');
-    titles.add('SnackBar');
-    titles.add('Reorder List');
-    titles.add('Swipe to Dismiss List');
+    sub_titles.add("Data Table");
+    sub_titles.add('ExpansionTile');
+    sub_titles.add('ExpansionPanel');
+    sub_titles.add('PopMenuButton');
+    sub_titles.add('BottomSheet');
+    sub_titles.add('Progress Bar');
+    sub_titles.add('Slider');
+    sub_titles.add('SnackBar');
+    sub_titles.add('Reorder List');
+    sub_titles.add('Swipe to Dismiss List');
   }
 
   void renderPreview(int pos) {
