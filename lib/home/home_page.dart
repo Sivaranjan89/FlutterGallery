@@ -2,6 +2,9 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gallery/animations/animated_switcher.dart';
+import 'package:flutter_gallery/appbar/app_bar.dart';
+import 'package:flutter_gallery/appbar/silver_app_bar.dart';
+import 'package:flutter_gallery/appbar/silver_app_bar_fab.dart';
 import 'package:flutter_gallery/button/drop_down_button.dart';
 import 'package:flutter_gallery/button/flat_button.dart';
 import 'package:flutter_gallery/button/icon_button.dart';
@@ -16,6 +19,11 @@ import 'package:flutter_gallery/drawer/drawer.dart';
 import 'package:flutter_gallery/home/home_screen.dart';
 import 'package:flutter_gallery/image/image_asset.dart';
 import 'package:flutter_gallery/image/image_url.dart';
+import 'package:flutter_gallery/list/grid_view.dart';
+import 'package:flutter_gallery/list/list_view.dart';
+import 'package:flutter_gallery/list/list_view_builder.dart';
+import 'package:flutter_gallery/pager/pager.dart';
+import 'package:flutter_gallery/pager/pager_indicator.dart';
 import 'package:flutter_gallery/radiobutton/radiobutton.dart';
 import 'package:flutter_gallery/switch/switch.dart';
 import 'package:flutter_gallery/switch/switch_list_tile.dart';
@@ -129,8 +137,24 @@ class _HomePageState extends State<HomePage> {
     titles.add("Tab Bar");
     titles.add("Bottom Bar");
     titles.add("Bottom Bar (FAB)");
-    titles.add("View Pager");
-    titles.add("View Pager with Indicator");
+    titles.add("ViewPager");
+    titles.add("ViewPager with Indicator");
+    titles.add("ListView");
+    titles.add("ListView Builder");
+    titles.add("GridView");
+    titles.add("AppBar");
+    titles.add("SliverAppBar");
+    titles.add("Sliver FAB");
+    titles.add("Data Table");
+    titles.add('ExpansionTile');
+    titles.add('ExpansionPanel');
+    titles.add('PopMenuButton');
+    titles.add('BottomSheet');
+    titles.add('Progress Bar');
+    titles.add('Slider');
+    titles.add('SnackBar');
+    titles.add('Reorder List');
+    titles.add('Swipe to Dismiss List');
 
     sub_titles.add("Lets you display text to the user");
     sub_titles.add("Lets you span the text in different ways");
@@ -158,6 +182,22 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Bottom Bar with Floating Action Button notched to it");
     sub_titles.add("Pager allows you to create and navigate multiple pages with a horizontal / vertical scrolling funcionality");
     sub_titles.add("Design a pager with an indicator to indicate page number");
+    sub_titles.add("Design a list of items");
+    sub_titles.add("Design a list of items using builder");
+    sub_titles.add("Display items in a Grid format. Commonly used to display images");
+    sub_titles.add("Create a Fixed Appbar to display a group of widgets with actions");
+    sub_titles.add("Display a Collapsing AppBar");
+    sub_titles.add("Display a Collapsing AppBar with a Floating Action button attached");
+    titles.add("Data Table");
+    titles.add('ExpansionTile');
+    titles.add('ExpansionPanel');
+    titles.add('PopMenuButton');
+    titles.add('BottomSheet');
+    titles.add('Progress Bar');
+    titles.add('Slider');
+    titles.add('SnackBar');
+    titles.add('Reorder List');
+    titles.add('Swipe to Dismiss List');
   }
 
   void renderPreview(int pos) {
@@ -232,6 +272,30 @@ class _HomePageState extends State<HomePage> {
     }
     else if(sorted_titles.elementAt(pos) == 'Bottom Bar (FAB)') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewBottomBarFAB()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'ViewPager') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewViewpager()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'ViewPager with Indicator') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewViewpagerIndicator()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'ListView') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewListview()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'ListView Builder') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewListViewBuilder()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'GridView') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewGridView()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'AppBar') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewAppbar()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'SliverAppBar') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSilverAppbar()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Sliver FAB') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSilverAppbarFAB()));
     }
   }
 }
