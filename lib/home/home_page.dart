@@ -19,6 +19,8 @@ import 'package:flutter_gallery/image/image_url.dart';
 import 'package:flutter_gallery/radiobutton/radiobutton.dart';
 import 'package:flutter_gallery/switch/switch.dart';
 import 'package:flutter_gallery/switch/switch_list_tile.dart';
+import 'package:flutter_gallery/tabs/bottom_bar.dart';
+import 'package:flutter_gallery/tabs/bottom_bar_fab.dart';
 import 'package:flutter_gallery/tabs/tab_bar.dart';
 import 'package:flutter_gallery/text/rich_text.dart';
 import 'package:flutter_gallery/text/text.dart';
@@ -127,6 +129,8 @@ class _HomePageState extends State<HomePage> {
     titles.add("Tab Bar");
     titles.add("Bottom Bar");
     titles.add("Bottom Bar (FAB)");
+    titles.add("View Pager");
+    titles.add("View Pager with Indicator");
 
     sub_titles.add("Lets you display text to the user");
     sub_titles.add("Lets you span the text in different ways");
@@ -152,6 +156,8 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Renders tabs where each tab will display its allocated child view. Much like viewing multiple screens in one screen");
     sub_titles.add("Similar to the Tab bar but placed in the bottom");
     sub_titles.add("Bottom Bar with Floating Action Button notched to it");
+    sub_titles.add("Pager allows you to create and navigate multiple pages with a horizontal / vertical scrolling funcionality");
+    sub_titles.add("Design a pager with an indicator to indicate page number");
   }
 
   void renderPreview(int pos) {
@@ -222,10 +228,10 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewTabBar()));
     }
     else if(sorted_titles.elementAt(pos) == 'Bottom Bar') {
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewBottomBar()));
     }
     else if(sorted_titles.elementAt(pos) == 'Bottom Bar (FAB)') {
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewBottomBarFAB()));
     }
   }
 }
