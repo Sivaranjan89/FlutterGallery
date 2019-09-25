@@ -19,6 +19,7 @@ import 'package:flutter_gallery/image/image_url.dart';
 import 'package:flutter_gallery/radiobutton/radiobutton.dart';
 import 'package:flutter_gallery/switch/switch.dart';
 import 'package:flutter_gallery/switch/switch_list_tile.dart';
+import 'package:flutter_gallery/tabs/tab_bar.dart';
 import 'package:flutter_gallery/text/rich_text.dart';
 import 'package:flutter_gallery/text/text.dart';
 import 'package:flutter_gallery/textinput/text_field.dart';
@@ -218,7 +219,7 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDrawer()));
     }
     else if(sorted_titles.elementAt(pos) == 'Tab Bar') {
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewTabBar()));
     }
     else if(sorted_titles.elementAt(pos) == 'Bottom Bar') {
       //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDialog()));

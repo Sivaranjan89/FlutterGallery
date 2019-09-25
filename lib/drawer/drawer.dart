@@ -26,6 +26,7 @@ class _State extends State<PreviewDrawer> {
     return Scaffold(
       backgroundColor: ApplicationConstants.appBlue,
       appBar: PreviewAppBar(appBar: AppBar(), title: 'Drawer'),
+      drawerEdgeDragWidth: 100, //The drag can be started 100dp from left now allowing easier drag
       drawer: new Drawer( //drawer will open drawer from left. endDrawer will open drawer from right
           child: new ListView(
             children: <Widget>[
