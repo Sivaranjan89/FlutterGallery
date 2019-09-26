@@ -13,6 +13,7 @@ import 'package:flutter_gallery/button/toggle_button.dart';
 import 'package:flutter_gallery/checkbox/checkbox.dart';
 import 'package:flutter_gallery/chips/chips.dart';
 import 'package:flutter_gallery/datatable/data_table.dart';
+import 'package:flutter_gallery/datatable/paginated_data_table.dart';
 import 'package:flutter_gallery/dialog/alert_dialog.dart';
 import 'package:flutter_gallery/dialog/custom_dialog.dart';
 import 'package:flutter_gallery/dialog/time_date_dialog.dart';
@@ -304,7 +305,7 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDataTable()));
     }
     else if(sorted_titles.elementAt(pos) == 'Paginated Data Table') {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDataTable()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewPaginatedDataTable()));
     }
   }
 }
