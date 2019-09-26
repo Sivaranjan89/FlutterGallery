@@ -12,6 +12,7 @@ import 'package:flutter_gallery/button/raised_button.dart';
 import 'package:flutter_gallery/button/toggle_button.dart';
 import 'package:flutter_gallery/checkbox/checkbox.dart';
 import 'package:flutter_gallery/chips/chips.dart';
+import 'package:flutter_gallery/datatable/data_table.dart';
 import 'package:flutter_gallery/dialog/alert_dialog.dart';
 import 'package:flutter_gallery/dialog/custom_dialog.dart';
 import 'package:flutter_gallery/dialog/time_date_dialog.dart';
@@ -188,7 +189,7 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Create a Fixed Appbar to display a group of widgets with actions");
     sub_titles.add("Display a Collapsing AppBar");
     sub_titles.add("Display a Collapsing AppBar with a Floating Action button attached");
-    sub_titles.add("Data Table");
+    sub_titles.add("Display a table of hude data");
     sub_titles.add('ExpansionTile');
     sub_titles.add('ExpansionPanel');
     sub_titles.add('PopMenuButton');
@@ -296,6 +297,9 @@ class _HomePageState extends State<HomePage> {
     }
     else if(sorted_titles.elementAt(pos) == 'Sliver FAB') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSilverAppbarFAB()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Data Table') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDataTable()));
     }
   }
 }
