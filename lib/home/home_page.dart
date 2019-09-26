@@ -147,6 +147,7 @@ class _HomePageState extends State<HomePage> {
     titles.add("SliverAppBar");
     titles.add("Sliver FAB");
     titles.add("Data Table");
+    titles.add("Paginated Data Table");
     titles.add('ExpansionTile');
     titles.add('ExpansionPanel');
     titles.add('PopMenuButton');
@@ -190,6 +191,7 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Display a Collapsing AppBar");
     sub_titles.add("Display a Collapsing AppBar with a Floating Action button attached");
     sub_titles.add("Display a table of hude data");
+    sub_titles.add("Display a table of hude data with Pagination");
     sub_titles.add('ExpansionTile');
     sub_titles.add('ExpansionPanel');
     sub_titles.add('PopMenuButton');
@@ -299,6 +301,9 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSilverAppbarFAB()));
     }
     else if(sorted_titles.elementAt(pos) == 'Data Table') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDataTable()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Paginated Data Table') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDataTable()));
     }
   }
