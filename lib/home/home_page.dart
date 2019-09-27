@@ -30,6 +30,7 @@ import 'package:flutter_gallery/list/grid_view.dart';
 import 'package:flutter_gallery/list/list_view.dart';
 import 'package:flutter_gallery/list/list_view_builder.dart';
 import 'package:flutter_gallery/dialog/bottom_sheet.dart';
+import 'package:flutter_gallery/list/reorder_list.dart';
 import 'package:flutter_gallery/menu/pop_menu.dart';
 import 'package:flutter_gallery/pager/pager.dart';
 import 'package:flutter_gallery/pager/pager_indicator.dart';
@@ -168,7 +169,7 @@ class _HomePageState extends State<HomePage> {
     titles.add('Range Slider');
     titles.add('SnackBar');
     titles.add('Reorder List');
-    titles.add('Swipe to Dismiss List');
+    titles.add('Swipe to Dismiss');
 
     sub_titles.add("Lets you display text to the user");
     sub_titles.add("Lets you span the text in different ways");
@@ -212,9 +213,9 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add('Display an indicator to inform the user of the progress of their action');
     sub_titles.add('Create a control for user to slide and choose a numeric value');
     sub_titles.add('Create a control for user to slide and choose a numeric value between two ranges');
-    sub_titles.add('SnackBar');
-    sub_titles.add('Reorder List');
-    sub_titles.add('Swipe to Dismiss List');
+    sub_titles.add('Create a stylish snackbar which displays information to the user for a specified interval');
+    sub_titles.add('Create a List that allwos the user to re order it');
+    sub_titles.add('Create items that can be dismissed upon user swipe');
   }
 
   void renderPreview(int pos) {
@@ -346,6 +347,12 @@ class _HomePageState extends State<HomePage> {
     }
     else if(sorted_titles.elementAt(pos) == 'SnackBar') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSnackbar()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Reorder List') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewReorderList()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Swipe to Dismiss') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewReorderList()));
     }
   }
 }
