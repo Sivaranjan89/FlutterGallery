@@ -40,7 +40,7 @@ class _State extends State<PreviewBottomSheet> {
     );
   }
 
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool isSheetUp = false;
   var bottomSheetController;
   void showCode() {

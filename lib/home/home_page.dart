@@ -17,6 +17,8 @@ import 'package:flutter_gallery/datatable/paginated_data_table.dart';
 import 'package:flutter_gallery/datatable/table.dart';
 import 'package:flutter_gallery/dialog/alert_dialog.dart';
 import 'package:flutter_gallery/dialog/custom_dialog.dart';
+import 'package:flutter_gallery/dialog/progress.dart';
+import 'package:flutter_gallery/dialog/snackbar.dart';
 import 'package:flutter_gallery/dialog/time_date_dialog.dart';
 import 'package:flutter_gallery/drawer/drawer.dart';
 import 'package:flutter_gallery/home/home_screen.dart';
@@ -27,11 +29,13 @@ import 'package:flutter_gallery/list/expansion_tile.dart';
 import 'package:flutter_gallery/list/grid_view.dart';
 import 'package:flutter_gallery/list/list_view.dart';
 import 'package:flutter_gallery/list/list_view_builder.dart';
-import 'package:flutter_gallery/menu/bottom_sheet.dart';
+import 'package:flutter_gallery/dialog/bottom_sheet.dart';
 import 'package:flutter_gallery/menu/pop_menu.dart';
 import 'package:flutter_gallery/pager/pager.dart';
 import 'package:flutter_gallery/pager/pager_indicator.dart';
 import 'package:flutter_gallery/radiobutton/radiobutton.dart';
+import 'package:flutter_gallery/slider/range_slider.dart';
+import 'package:flutter_gallery/slider/slider.dart';
 import 'package:flutter_gallery/switch/switch.dart';
 import 'package:flutter_gallery/switch/switch_list_tile.dart';
 import 'package:flutter_gallery/tabs/bottom_bar.dart';
@@ -159,8 +163,9 @@ class _HomePageState extends State<HomePage> {
     titles.add('ExpansionPanelList');
     titles.add('PopMenu');
     titles.add('BottomSheet');
-    titles.add('Progress Bar');
+    titles.add('Progress Indicator');
     titles.add('Slider');
+    titles.add('Range Slider');
     titles.add('SnackBar');
     titles.add('Reorder List');
     titles.add('Swipe to Dismiss List');
@@ -204,8 +209,9 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add('Display multi level lists in the form of Panels');
     sub_titles.add('Display a menu button which will show a list of options as popup');
     sub_titles.add('Slide a page from below to perform some action or display some information for the user');
-    sub_titles.add('Progress Bar');
-    sub_titles.add('Slider');
+    sub_titles.add('Display an indicator to inform the user of the progress of their action');
+    sub_titles.add('Create a control for user to slide and choose a numeric value');
+    sub_titles.add('Create a control for user to slide and choose a numeric value between two ranges');
     sub_titles.add('SnackBar');
     sub_titles.add('Reorder List');
     sub_titles.add('Swipe to Dismiss List');
@@ -328,6 +334,18 @@ class _HomePageState extends State<HomePage> {
     }
     else if(sorted_titles.elementAt(pos) == 'BottomSheet') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewBottomSheet()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Progress Indicator') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewProgress()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Slider') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSlider()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Range Slider') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewRangeSlider()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'SnackBar') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSnackbar()));
     }
   }
 }
