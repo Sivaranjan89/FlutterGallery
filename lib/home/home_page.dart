@@ -27,6 +27,8 @@ import 'package:flutter_gallery/list/expansion_tile.dart';
 import 'package:flutter_gallery/list/grid_view.dart';
 import 'package:flutter_gallery/list/list_view.dart';
 import 'package:flutter_gallery/list/list_view_builder.dart';
+import 'package:flutter_gallery/menu/bottom_sheet.dart';
+import 'package:flutter_gallery/menu/pop_menu.dart';
 import 'package:flutter_gallery/pager/pager.dart';
 import 'package:flutter_gallery/pager/pager_indicator.dart';
 import 'package:flutter_gallery/radiobutton/radiobutton.dart';
@@ -98,7 +100,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    return ListView.builder(itemCount: sorted_titles.length, itemBuilder: (context, pos) {
+    return ListView.builder(cacheExtent: 100, itemCount: sorted_titles.length, itemBuilder: (context, pos) {
       return Center(
         child: Card(
           child: Container(
@@ -155,7 +157,7 @@ class _HomePageState extends State<HomePage> {
     titles.add("Paginated Data Table");
     titles.add('ExpansionTile');
     titles.add('ExpansionPanelList');
-    titles.add('PopMenuButton');
+    titles.add('PopMenu');
     titles.add('BottomSheet');
     titles.add('Progress Bar');
     titles.add('Slider');
@@ -200,8 +202,8 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Display a table of hude data with Pagination");
     sub_titles.add('Display two or multi level lists');
     sub_titles.add('Display multi level lists in the form of Panels');
-    sub_titles.add('PopMenuButton');
-    sub_titles.add('BottomSheet');
+    sub_titles.add('Display a menu button which will show a list of options as popup');
+    sub_titles.add('Slide a page from below to perform some action or display some information for the user');
     sub_titles.add('Progress Bar');
     sub_titles.add('Slider');
     sub_titles.add('SnackBar');
@@ -320,6 +322,12 @@ class _HomePageState extends State<HomePage> {
     }
     else if(sorted_titles.elementAt(pos) == 'ExpansionPanelList') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewExpansionPanelList()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'PopMenu') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewPopMenu()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'BottomSheet') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewBottomSheet()));
     }
   }
 }
