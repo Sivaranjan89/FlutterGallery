@@ -14,6 +14,7 @@ import 'package:flutter_gallery/checkbox/checkbox.dart';
 import 'package:flutter_gallery/chips/chips.dart';
 import 'package:flutter_gallery/datatable/data_table.dart';
 import 'package:flutter_gallery/datatable/paginated_data_table.dart';
+import 'package:flutter_gallery/datatable/table.dart';
 import 'package:flutter_gallery/dialog/alert_dialog.dart';
 import 'package:flutter_gallery/dialog/custom_dialog.dart';
 import 'package:flutter_gallery/dialog/time_date_dialog.dart';
@@ -21,6 +22,8 @@ import 'package:flutter_gallery/drawer/drawer.dart';
 import 'package:flutter_gallery/home/home_screen.dart';
 import 'package:flutter_gallery/image/image_asset.dart';
 import 'package:flutter_gallery/image/image_url.dart';
+import 'package:flutter_gallery/list/expansion_panel.dart';
+import 'package:flutter_gallery/list/expansion_tile.dart';
 import 'package:flutter_gallery/list/grid_view.dart';
 import 'package:flutter_gallery/list/list_view.dart';
 import 'package:flutter_gallery/list/list_view_builder.dart';
@@ -147,10 +150,11 @@ class _HomePageState extends State<HomePage> {
     titles.add("AppBar");
     titles.add("SliverAppBar");
     titles.add("Sliver FAB");
+    titles.add("Table");
     titles.add("Data Table");
     titles.add("Paginated Data Table");
     titles.add('ExpansionTile');
-    titles.add('ExpansionPanel');
+    titles.add('ExpansionPanelList');
     titles.add('PopMenuButton');
     titles.add('BottomSheet');
     titles.add('Progress Bar');
@@ -191,10 +195,11 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Create a Fixed Appbar to display a group of widgets with actions");
     sub_titles.add("Display a Collapsing AppBar");
     sub_titles.add("Display a Collapsing AppBar with a Floating Action button attached");
+    sub_titles.add("Display a grid of data which appears like a table but has no scrolling");
     sub_titles.add("Display a table of hude data");
     sub_titles.add("Display a table of hude data with Pagination");
-    sub_titles.add('ExpansionTile');
-    sub_titles.add('ExpansionPanel');
+    sub_titles.add('Display two or multi level lists');
+    sub_titles.add('Display multi level lists in the form of Panels');
     sub_titles.add('PopMenuButton');
     sub_titles.add('BottomSheet');
     sub_titles.add('Progress Bar');
@@ -301,11 +306,20 @@ class _HomePageState extends State<HomePage> {
     else if(sorted_titles.elementAt(pos) == 'Sliver FAB') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSilverAppbarFAB()));
     }
+    else if(sorted_titles.elementAt(pos) == 'Table') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewTable()));
+    }
     else if(sorted_titles.elementAt(pos) == 'Data Table') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDataTable()));
     }
     else if(sorted_titles.elementAt(pos) == 'Paginated Data Table') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewPaginatedDataTable()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'ExpansionTile') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewExpansionTile()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'ExpansionPanelList') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewExpansionPanelList()));
     }
   }
 }

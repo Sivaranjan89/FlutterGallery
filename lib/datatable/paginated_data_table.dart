@@ -9,35 +9,35 @@ import 'package:flutter_gallery/datatable/member.dart';
 import '../app_constants.dart';
 
 class PreviewPaginatedDataTable extends StatefulWidget {
-  List<Member> users;
-  List<Member> selectedUsers;
-  bool sortAscending;
-  int sortColumn = 0;
-  int rowsPerPage = 5;
+
 
   @override
   State<StatefulWidget> createState() {
-    selectedUsers = List();
-    users = Member.getUsers();
-    sortAscending = false;
-    sortColumn = 0;
-    rowsPerPage = 5;
     return _State();
   }
 }
 
 class _State extends State<PreviewPaginatedDataTable> {
+  List<Member> users;
+  bool sortAscending = false;
+  int sortColumn = 0;
+  int rowsPerPage = 4;
+
+  FamilyDataSource dataSource;
 
   @override
   void initState() {
     super.initState();
 
-    onSortColum(widget.sortColumn, widget.sortAscending);
+    users = Member.getUsers(); //Get the data to be populated
+    onSortColum(sortColumn, sortAscending); //By Default we assign descending
+    dataSource = FamilyDataSource(members: users); //Initiate the Datasource and pass he list array to it
   }
 
   @override
   Widget build(BuildContext context) {
-    print('COLUMN :: ' + widget.sortColumn.toString() + '  :::::  ASCEND ? ' + widget.sortAscending.toString());
+    dataSource.updateDataSource(users); //Update the data source whenever setState is called
+
     return Scaffold(
       backgroundColor: ApplicationConstants.appBlue,
       appBar: PreviewAppBar(appBar: AppBar(), title: 'Paginated Data Table'),
@@ -48,14 +48,14 @@ class _State extends State<PreviewPaginatedDataTable> {
           showCode();
         },
       ),
-      body: SingleChildScrollView(
+      body: SingleChildScrollView( //Wrapping it in a SingleChildScrollView will allow the table to be wrapped correctly (WRAP_CONTENT)
         child: PaginatedDataTable(
-          header: (Text('Family Records')),
-          rowsPerPage: widget.rowsPerPage,
-          availableRowsPerPage: [5,10,15],
-          onRowsPerPageChanged: (value) {
+          header: (Text('Family Records')), //Title for the Table (optional)
+          rowsPerPage: rowsPerPage, //By Default how many rows per page should be there
+          availableRowsPerPage: [4, 8, users.length], //Give options to user to choose how many rows they can see per page
+          onRowsPerPageChanged: (value) { //Whenever user changes the row per page value, assign that value to our variable
             setState(() {
-              widget.rowsPerPage = value;
+              rowsPerPage = value;
             });
           },
           columns: [ //Create the columns here
@@ -65,9 +65,9 @@ class _State extends State<PreviewPaginatedDataTable> {
                 numeric: false,
                 onSort: (index, ascending) {
                   setState(() { //Update the column to sort here
-                    widget.sortColumn = index;
-                    widget.sortAscending = !widget.sortAscending;
-                    onSortColum(index, widget.sortAscending);
+                    sortColumn = index;
+                    sortAscending = !sortAscending;
+                    onSortColum(index, sortAscending);
                   });
                 }),
             DataColumn(
@@ -76,9 +76,9 @@ class _State extends State<PreviewPaginatedDataTable> {
                 numeric: false,
                 onSort: (index, ascending) {
                   setState(() {
-                    widget.sortColumn = index;
-                    widget.sortAscending = !widget.sortAscending;
-                    onSortColum(index, widget.sortAscending);
+                    sortColumn = index;
+                    sortAscending = !sortAscending;
+                    onSortColum(index, sortAscending);
                   });
                 }),
             DataColumn(
@@ -87,9 +87,9 @@ class _State extends State<PreviewPaginatedDataTable> {
                 numeric: false,
                 onSort: (index, ascending) {
                   setState(() {
-                    widget.sortColumn = index;
-                    widget.sortAscending = !widget.sortAscending;
-                    onSortColum(index, widget.sortAscending);
+                    sortColumn = index;
+                    sortAscending = !sortAscending;
+                    onSortColum(index, sortAscending);
                   });
                 }),
             DataColumn(
@@ -98,9 +98,9 @@ class _State extends State<PreviewPaginatedDataTable> {
                 numeric: false,
                 onSort: (index, ascending) {
                   setState(() {
-                    widget.sortColumn = index;
-                    widget.sortAscending = !widget.sortAscending;
-                    onSortColum(index, widget.sortAscending);
+                    sortColumn = index;
+                    sortAscending = !sortAscending;
+                    onSortColum(index, sortAscending);
                   });
                 }),
             DataColumn(
@@ -109,69 +109,61 @@ class _State extends State<PreviewPaginatedDataTable> {
                 numeric: false,
                 onSort: (index, ascending) {
                   setState(() {
-                    widget.sortColumn = index;
-                    widget.sortAscending = !widget.sortAscending;
-                    onSortColum(index, widget.sortAscending);
+                    sortColumn = index;
+                    sortAscending = !sortAscending;
+                    onSortColum(index, sortAscending);
                   });
                 }),
           ],
 
-          source: FamilyDataSource(users: widget.users),
+          source: dataSource, //Assign the data source here
 
         ),
       ),
     );
   }
 
-  onRowSelected(bool selected, Member user) {
-    if(selected) {
-      widget.selectedUsers.add(user);
-    } else {
-      widget.selectedUsers.remove(user);
-    }
-  }
-
   onSortColum(int columnIndex, bool ascending) {
     if (columnIndex == 0) {
       if (ascending) {
-        widget.users.sort((a, b) => a.firstName.compareTo(b.firstName));
+        users.sort((a, b) => a.firstName.compareTo(b.firstName));
       } else {
-        widget.users.sort((a, b) => b.firstName.compareTo(a.firstName));
+        users.sort((a, b) => b.firstName.compareTo(a.firstName));
       }
     }
     else if (columnIndex == 1) {
       if (ascending) {
-        widget.users.sort((a, b) => a.lastName.compareTo(b.lastName));
+        users.sort((a, b) => a.lastName.compareTo(b.lastName));
       } else {
-        widget.users.sort((a, b) => b.lastName.compareTo(a.lastName));
+        users.sort((a, b) => b.lastName.compareTo(a.lastName));
       }
     }
     else if (columnIndex == 2) {
       if (ascending) {
-        widget.users.sort((a, b) => a.age.compareTo(b.age));
+        users.sort((a, b) => a.age.compareTo(b.age));
       } else {
-        widget.users.sort((a, b) => b.age.compareTo(a.age));
+        users.sort((a, b) => b.age.compareTo(a.age));
       }
     }
     else if (columnIndex == 3) {
       if (ascending) {
-        widget.users.sort((a, b) => a.gender.compareTo(b.gender));
+        users.sort((a, b) => a.gender.compareTo(b.gender));
       } else {
-        widget.users.sort((a, b) => b.gender.compareTo(a.gender));
+        users.sort((a, b) => b.gender.compareTo(a.gender));
       }
     }
     else if (columnIndex == 4) {
       if (ascending) {
-        widget.users.sort((a, b) => a.status.compareTo(b.status));
+        users.sort((a, b) => a.status.compareTo(b.status));
       } else {
-        widget.users.sort((a, b) => b.status.compareTo(a.status));
+        users.sort((a, b) => b.status.compareTo(a.status));
       }
     }
   }
 
   void showCode() {
     Dialog dialog = ApplicationConstants.getCodeDialog(
-        'https://docs.google.com/document/d/e/2PACX-1vSBhRXyQIY3cOTdTYovo7-CRDYIDk-oA-0tLlUUOrIBggi5sUDzdP5i813duQ--7rDshHIgnIYMmorT/pub');
+        'https://docs.google.com/document/d/e/2PACX-1vQTkKG4BvbOwlZvFd2al68fllMBGUzw6Dd0AAJ_QB8CkLx8Qy-aXiXy6yS1H_rZbcvmLYIU4VKb4gzr/pub');
     showDialog(context: context, builder: (context) => dialog);
   }
 }
@@ -180,27 +172,27 @@ class FamilyDataSource extends DataTableSource {
 
   int selectedCount = 0;
 
-  List<Member> users;
+  List<Member> members;
 
-  FamilyDataSource({this.users});
+  FamilyDataSource({this.members});
 
 
   @override
-  DataRow getRow(int index) {
+  DataRow getRow(int index) { //Design the Data row here
     return DataRow.byIndex(
       index: index,
-      selected: users[index].selected,
+      selected: members[index].selected,
       onSelectChanged: (b) {
         selectedCount += b ? 1 : -1;
-        users[index].selected = b;
-        notifyListeners();
+        members[index].selected = b;
+        notifyListeners(); //notifyListener will refresh the data source
       },
       cells: <DataCell>[
-        DataCell(Text(users[index].firstName)),
-        DataCell(Text(users[index].lastName)),
-        DataCell(Text(users[index].age.toString())),
-        DataCell(Text(users[index].gender)),
-        DataCell(Text(users[index].status)),
+        DataCell(Text(members[index].firstName)),
+        DataCell(Text(members[index].lastName)),
+        DataCell(Text(members[index].age.toString())),
+        DataCell(Text(members[index].gender)),
+        DataCell(Text(members[index].status)),
       ]
     );
   }
@@ -209,11 +201,26 @@ class FamilyDataSource extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => users.length;
+  int get rowCount => members.length;
 
   @override
   int get selectedRowCount => selectedCount;
 
+  updateDataSource(List<Member> updatedList) { //Use this method for actions to update the data
+    members = updatedList;
+    notifyListeners();
+  }
 
+  List<Member> getSelected() { //Use this method for actions to get the list of selected entries
+    List<Member> selected = List();
+
+    for(int i=0; i<members.length; i++) {
+      if(members[i].selected) {
+        selected.add(members[i]);
+      }
+    }
+
+    return selected;
+  }
 
 }
