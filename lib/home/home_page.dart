@@ -20,6 +20,7 @@ import 'package:flutter_gallery/dialog/custom_dialog.dart';
 import 'package:flutter_gallery/dialog/progress.dart';
 import 'package:flutter_gallery/dialog/snackbar.dart';
 import 'package:flutter_gallery/dialog/time_date_dialog.dart';
+import 'package:flutter_gallery/drag/draggable.dart';
 import 'package:flutter_gallery/drawer/drawer.dart';
 import 'package:flutter_gallery/home/home_screen.dart';
 import 'package:flutter_gallery/image/image_asset.dart';
@@ -31,6 +32,7 @@ import 'package:flutter_gallery/list/list_view.dart';
 import 'package:flutter_gallery/list/list_view_builder.dart';
 import 'package:flutter_gallery/dialog/bottom_sheet.dart';
 import 'package:flutter_gallery/list/reorder_list.dart';
+import 'package:flutter_gallery/list/swipe_dismiss.dart';
 import 'package:flutter_gallery/menu/pop_menu.dart';
 import 'package:flutter_gallery/pager/pager.dart';
 import 'package:flutter_gallery/pager/pager_indicator.dart';
@@ -41,6 +43,7 @@ import 'package:flutter_gallery/switch/switch.dart';
 import 'package:flutter_gallery/switch/switch_list_tile.dart';
 import 'package:flutter_gallery/tabs/bottom_bar.dart';
 import 'package:flutter_gallery/tabs/bottom_bar_fab.dart';
+import 'package:flutter_gallery/tabs/bottom_tab_bar.dart';
 import 'package:flutter_gallery/tabs/tab_bar.dart';
 import 'package:flutter_gallery/text/rich_text.dart';
 import 'package:flutter_gallery/text/text.dart';
@@ -147,6 +150,7 @@ class _HomePageState extends State<HomePage> {
     titles.add("Date / Time Picker");
     titles.add("Drawer");
     titles.add("Tab Bar");
+    titles.add('Bottom Tab Bar');
     titles.add("Bottom Bar");
     titles.add("Bottom Bar (FAB)");
     titles.add("ViewPager");
@@ -170,6 +174,19 @@ class _HomePageState extends State<HomePage> {
     titles.add('SnackBar');
     titles.add('Reorder List');
     titles.add('Swipe to Dismiss');
+    titles.add('Drag n Drop');
+    titles.add('Bluetooth');
+    titles.add('Camera');
+    titles.add('Pull to Refresh');
+    titles.add('Scrollable Tabs');
+    titles.add('Webview');
+    titles.add('Notification');
+    titles.add('Hero Animation');
+    titles.add('Animations');
+    titles.add('Background Service');
+    titles.add('Broadcast');
+    titles.add('Data Persistence');
+    titles.add('Database');
 
     sub_titles.add("Lets you display text to the user");
     sub_titles.add("Lets you span the text in different ways");
@@ -193,6 +210,7 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add("Shows a date / time picker dialog for user to graphically choose");
     sub_titles.add("Renders a navigation drawer on the left / right which can slided inside the screen");
     sub_titles.add("Renders tabs where each tab will display its allocated child view. Much like viewing multiple screens in one screen");
+    sub_titles.add('Renders Tab Bar at the bottom');
     sub_titles.add("Similar to the Tab bar but placed in the bottom");
     sub_titles.add("Bottom Bar with Floating Action Button notched to it");
     sub_titles.add("Pager allows you to create and navigate multiple pages with a horizontal / vertical scrolling funcionality");
@@ -216,6 +234,19 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add('Create a stylish snackbar which displays information to the user for a specified interval');
     sub_titles.add('Create a List that allwos the user to re order it');
     sub_titles.add('Create items that can be dismissed upon user swipe');
+    sub_titles.add('Allow users to drag Widgets in the screen to their expected detinations');
+    sub_titles.add('Bluetooth');
+    sub_titles.add('Camera');
+    sub_titles.add('Pull to Refresh');
+    sub_titles.add('Scrollable Tabs');
+    sub_titles.add('Webview');
+    sub_titles.add('Notification');
+    sub_titles.add('Hero Animation');
+    sub_titles.add('Animations');
+    sub_titles.add('Background Service');
+    sub_titles.add('Broadcast');
+    sub_titles.add('Data Persistence');
+    sub_titles.add('Database');
   }
 
   void renderPreview(int pos) {
@@ -285,6 +316,9 @@ class _HomePageState extends State<HomePage> {
     else if(sorted_titles.elementAt(pos) == 'Tab Bar') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewTabBar()));
     }
+    else if(sorted_titles.elementAt(pos) == 'Bottom Tab Bar') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewBottomTabBar()));
+    }
     else if(sorted_titles.elementAt(pos) == 'Bottom Bar') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewBottomBar()));
     }
@@ -352,7 +386,10 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewReorderList()));
     }
     else if(sorted_titles.elementAt(pos) == 'Swipe to Dismiss') {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewReorderList()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSwipeDismiss()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Drag n Drop') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDraggable()));
     }
   }
 }

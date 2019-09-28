@@ -45,6 +45,9 @@ flutter:
     - assets/images/logo.png
     - assets/images/loading.png
     - assets/images/wall.jpg
+    - assets/images/lion.png
+    - assets/images/croc.png
+    - assets/images/elephant.png
 
   fonts:
     - family: Londrina
