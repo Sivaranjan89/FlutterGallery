@@ -5,11 +5,13 @@ import 'package:flutter_gallery/animations/animated_switcher.dart';
 import 'package:flutter_gallery/appbar/app_bar.dart';
 import 'package:flutter_gallery/appbar/silver_app_bar.dart';
 import 'package:flutter_gallery/appbar/silver_app_bar_fab.dart';
+import 'package:flutter_gallery/bluetooth/bluetooth.dart';
 import 'package:flutter_gallery/button/drop_down_button.dart';
 import 'package:flutter_gallery/button/flat_button.dart';
 import 'package:flutter_gallery/button/icon_button.dart';
 import 'package:flutter_gallery/button/raised_button.dart';
 import 'package:flutter_gallery/button/toggle_button.dart';
+import 'package:flutter_gallery/cam/camera.dart';
 import 'package:flutter_gallery/checkbox/checkbox.dart';
 import 'package:flutter_gallery/chips/chips.dart';
 import 'package:flutter_gallery/datatable/data_table.dart';
@@ -235,8 +237,8 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add('Create a List that allwos the user to re order it');
     sub_titles.add('Create items that can be dismissed upon user swipe');
     sub_titles.add('Allow users to drag Widgets in the screen to their expected detinations');
-    sub_titles.add('Bluetooth');
-    sub_titles.add('Camera');
+    sub_titles.add('Learn to control actions related to Bluetooth');
+    sub_titles.add('Design your own custom camera view');
     sub_titles.add('Pull to Refresh');
     sub_titles.add('Scrollable Tabs');
     sub_titles.add('Webview');
@@ -390,6 +392,12 @@ class _HomePageState extends State<HomePage> {
     }
     else if(sorted_titles.elementAt(pos) == 'Drag n Drop') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDraggable()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Bluetooth') {
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewBluetooth()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Camera') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewCam()));
     }
   }
 }
