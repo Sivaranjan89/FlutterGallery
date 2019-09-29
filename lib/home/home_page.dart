@@ -14,6 +14,7 @@ import 'package:flutter_gallery/button/toggle_button.dart';
 import 'package:flutter_gallery/cam/camera.dart';
 import 'package:flutter_gallery/checkbox/checkbox.dart';
 import 'package:flutter_gallery/chips/chips.dart';
+import 'package:flutter_gallery/data/shared_pref.dart';
 import 'package:flutter_gallery/datatable/data_table.dart';
 import 'package:flutter_gallery/datatable/paginated_data_table.dart';
 import 'package:flutter_gallery/datatable/table.dart';
@@ -180,16 +181,16 @@ class _HomePageState extends State<HomePage> {
     titles.add('Reorder List');
     titles.add('Swipe to Dismiss');
     titles.add('Drag n Drop');
-    titles.add('Camera');
     titles.add('Pull to Refresh');
     titles.add('Scrollable Tabs');
     titles.add('Notification');
-    titles.add('Hero Animation');
-    titles.add('Animations');
-    titles.add('Background Service');
-    titles.add('Broadcast');
     titles.add('Data Persistence');
     titles.add('Database');
+    titles.add('Camera');
+    titles.add('Background Service');
+    titles.add('Broadcast');
+    titles.add('Hero Animation');
+    titles.add('Animations');
     titles.add('Webview');
 
     sub_titles.add("Lets you display text to the user");
@@ -239,16 +240,16 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add('Create a List that allwos the user to re order it');
     sub_titles.add('Create items that can be dismissed upon user swipe');
     sub_titles.add('Allow users to drag Widgets in the screen to their expected detinations');
-    sub_titles.add('Design your own custom camera view');
     sub_titles.add('Design a list which can be refreshed upon pulling from top to bottom');
     sub_titles.add('Design a Tab that allows tab items to be scrolled');
     sub_titles.add('Display a notification for the user');
-    sub_titles.add('Hero Animation');
-    sub_titles.add('Animations');
+    sub_titles.add('Save data in your application that stays even after the application is reopened');
+    sub_titles.add('Database');
+    sub_titles.add('Design your own custom camera view');
     sub_titles.add('Background Service');
     sub_titles.add('Broadcast');
-    sub_titles.add('Data Persistence');
-    sub_titles.add('Database');
+    sub_titles.add('Hero Animation');
+    sub_titles.add('Animations');
     sub_titles.add('Webview');
   }
 
@@ -405,6 +406,9 @@ class _HomePageState extends State<HomePage> {
     }
     else if(sorted_titles.elementAt(pos) == 'Notification') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewNotification()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Data Persistence') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewSP()));
     }
   }
 }
