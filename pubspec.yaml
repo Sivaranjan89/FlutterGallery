@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   webview_flutter: ^0.3.0
   flutter_bluetooth_serial: ^0.0.4
+  flutter_local_notifications:
 
 dev_dependencies:
   flutter_test:

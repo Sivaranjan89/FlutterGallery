@@ -19,6 +19,7 @@ import 'package:flutter_gallery/datatable/paginated_data_table.dart';
 import 'package:flutter_gallery/datatable/table.dart';
 import 'package:flutter_gallery/dialog/alert_dialog.dart';
 import 'package:flutter_gallery/dialog/custom_dialog.dart';
+import 'package:flutter_gallery/dialog/notification.dart';
 import 'package:flutter_gallery/dialog/progress.dart';
 import 'package:flutter_gallery/dialog/snackbar.dart';
 import 'package:flutter_gallery/dialog/time_date_dialog.dart';
@@ -33,6 +34,7 @@ import 'package:flutter_gallery/list/grid_view.dart';
 import 'package:flutter_gallery/list/list_view.dart';
 import 'package:flutter_gallery/list/list_view_builder.dart';
 import 'package:flutter_gallery/dialog/bottom_sheet.dart';
+import 'package:flutter_gallery/list/pull_to_refresh.dart';
 import 'package:flutter_gallery/list/reorder_list.dart';
 import 'package:flutter_gallery/list/swipe_dismiss.dart';
 import 'package:flutter_gallery/menu/pop_menu.dart';
@@ -46,6 +48,7 @@ import 'package:flutter_gallery/switch/switch_list_tile.dart';
 import 'package:flutter_gallery/tabs/bottom_bar.dart';
 import 'package:flutter_gallery/tabs/bottom_bar_fab.dart';
 import 'package:flutter_gallery/tabs/bottom_tab_bar.dart';
+import 'package:flutter_gallery/tabs/scroll_tab_bar.dart';
 import 'package:flutter_gallery/tabs/tab_bar.dart';
 import 'package:flutter_gallery/text/rich_text.dart';
 import 'package:flutter_gallery/text/text.dart';
@@ -177,11 +180,9 @@ class _HomePageState extends State<HomePage> {
     titles.add('Reorder List');
     titles.add('Swipe to Dismiss');
     titles.add('Drag n Drop');
-    titles.add('Bluetooth');
     titles.add('Camera');
     titles.add('Pull to Refresh');
     titles.add('Scrollable Tabs');
-    titles.add('Webview');
     titles.add('Notification');
     titles.add('Hero Animation');
     titles.add('Animations');
@@ -189,6 +190,7 @@ class _HomePageState extends State<HomePage> {
     titles.add('Broadcast');
     titles.add('Data Persistence');
     titles.add('Database');
+    titles.add('Webview');
 
     sub_titles.add("Lets you display text to the user");
     sub_titles.add("Lets you span the text in different ways");
@@ -237,18 +239,17 @@ class _HomePageState extends State<HomePage> {
     sub_titles.add('Create a List that allwos the user to re order it');
     sub_titles.add('Create items that can be dismissed upon user swipe');
     sub_titles.add('Allow users to drag Widgets in the screen to their expected detinations');
-    sub_titles.add('Learn to control actions related to Bluetooth');
     sub_titles.add('Design your own custom camera view');
-    sub_titles.add('Pull to Refresh');
-    sub_titles.add('Scrollable Tabs');
-    sub_titles.add('Webview');
-    sub_titles.add('Notification');
+    sub_titles.add('Design a list which can be refreshed upon pulling from top to bottom');
+    sub_titles.add('Design a Tab that allows tab items to be scrolled');
+    sub_titles.add('Display a notification for the user');
     sub_titles.add('Hero Animation');
     sub_titles.add('Animations');
     sub_titles.add('Background Service');
     sub_titles.add('Broadcast');
     sub_titles.add('Data Persistence');
     sub_titles.add('Database');
+    sub_titles.add('Webview');
   }
 
   void renderPreview(int pos) {
@@ -393,11 +394,17 @@ class _HomePageState extends State<HomePage> {
     else if(sorted_titles.elementAt(pos) == 'Drag n Drop') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewDraggable()));
     }
-    else if(sorted_titles.elementAt(pos) == 'Bluetooth') {
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewBluetooth()));
-    }
     else if(sorted_titles.elementAt(pos) == 'Camera') {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewCam()));
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewCam()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Pull to Refresh') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewPTR()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Scrollable Tabs') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewScrollableTabBar()));
+    }
+    else if(sorted_titles.elementAt(pos) == 'Notification') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewNotification()));
     }
   }
 }
