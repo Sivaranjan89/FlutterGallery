@@ -23,4 +23,23 @@ class User {
     return users;
   }
 
+  static List<User> getUser() {
+    List<User> users = List();
+    users.add(User(firstName: 'Sivaranjan', lastName: 'Langesan', age: 30));
+
+    return users;
+  }
+
+  factory User.fromMap(Map<String, dynamic> data) => User(firstName: data['firstName'], lastName: data['lastName'], age: data['age']);
+
+  Map<String, dynamic> toMap() => {"firstName": firstName, "lastName": lastName, "age": age};
+
+  static List<User> fromList(List<Map<String,dynamic>> query) {
+    List<User> notes = List<User>();
+    for (Map map in query) {
+      notes.add(User.fromMap(map));
+    }
+    return notes;
+  }
+
 }

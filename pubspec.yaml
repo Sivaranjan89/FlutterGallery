@@ -26,6 +26,7 @@ dependencies:
   webview_flutter: ^0.3.0
   flutter_bluetooth_serial: ^0.0.4
   shared_preferences: ^0.5.0
+  sqflite: ^1.0.0
   flutter_local_notifications:
 
 dev_dependencies:
